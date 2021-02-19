@@ -12,10 +12,32 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
 function createVector(x, y) {
-  return {
+  const vector = {
     x,
     y
   }
+  vector.plus = (vector2) => {
+    const x = vector.x + vector2.x;
+    const y = vector.y + vector2.y;
+
+    return createVector(x, y);
+  };
+  vector.times = (num) => {
+    const x = vector.x * num;
+    const y = vector.y * num;
+
+    return createVector(x, y);
+  };
+  vector.to = (vector2) => {
+    const x = vector2.x - vector.x;
+    const y = vector2.y - vector.y;
+
+    return createVector(x, y);
+  };
+  // minus
+  // dot
+  // cross
+  return vector;
 }
 
 function createRandomVector() {
@@ -42,10 +64,18 @@ function createRandomLineSegment() {
 }
 
 function getLineIntersection(segment1, segment2) {
-  segment1.start;
-  segment1.end;
-  segment2.start;
-  segment2.end;
+  const s1 = segment1;
+  const s2 = segment2;
+
+  const denominator = (s1.end.y - s1.start.y) * (s2.end.x - s2.start.x) - (s1.end.x - s1.start.x) * (s2.end.y - s2.start.y);
+
+  if(denominator === 0) return null; // lines are parallel
+
+  const numerator = (s1.end.x - s1.start.x) * (s2.start.y - s1.start.y) - (s1.end.y - s1.start.y) * (s2.start.x - s1.start.x);
+
+  const factor = numerator / denominator;
+
+  return s2.start.plus(s2.start.to(s2.end).times(factor));
 }
 
 function drawLineSegment(segment) {
@@ -84,8 +114,4 @@ const intersection = getLineIntersection(segment1, segment2);
 
 drawLineSegment(segment1);
 drawLineSegment(segment2);
-// drawCross(intersection);
-
-drawCross(createRandomVector());
-drawLineSegment(segment1);
-drawLineSegment(segment2);
+drawCross(intersection);
