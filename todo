@@ -2,6 +2,12 @@
 
 INBOX
 
+line collision vs section collision
+  own function for each?
+  does it make sense to pass sections as an argument for checking line intersection?
+
+do i really need the intersection point or only check if the segments intersect?
+
 
 
 
@@ -14,13 +20,19 @@ pre check for bounding box collision
 > determine bounding box overlap
 > use bounding box overlap at the end to determine segment collision
 
-
-
-
-
-
+r: object oriented javascript
 
 move vector library in own module
 
 vector library und segment library getrennt oder gemeinsam?
+
+add type checking + error messages va for vector methods
+
+
+
+
+
+
+
+make own repo for vector library?
 
