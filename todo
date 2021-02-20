@@ -1,0 +1,26 @@
+
+
+INBOX
+
+
+
+
+
+
+
+
+
+pre check for bounding box collision
+> determine bounding box overlap
+> use bounding box overlap at the end to determine segment collision
+
+
+
+
+
+
+
+move vector library in own module
+
+vector library und segment library getrennt oder gemeinsam?
+
