@@ -1,5 +1,3 @@
-
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -14,26 +12,26 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 function createVector(x, y) {
   const vector = {
     x,
-    y
+    y,
+    plus(vector2) {
+      const x = this.x + vector2.x;
+      const y = this.y + vector2.y;
+
+      return createVector(x, y);
+    },
+    times(num) {
+      const x = this.x * num;
+      const y = this.y * num;
+
+      return createVector(x, y);
+    },
+    to(vector2) {
+      const x = vector2.x - this.x;
+      const y = vector2.y - this.y;
+
+      return createVector(x, y);
+    }
   }
-  vector.plus = (vector2) => {
-    const x = vector.x + vector2.x;
-    const y = vector.y + vector2.y;
-
-    return createVector(x, y);
-  };
-  vector.times = (num) => {
-    const x = vector.x * num;
-    const y = vector.y * num;
-
-    return createVector(x, y);
-  };
-  vector.to = (vector2) => {
-    const x = vector2.x - vector.x;
-    const y = vector2.y - vector.y;
-
-    return createVector(x, y);
-  };
   // minus
   // dot
   // cross
